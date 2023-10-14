@@ -1,0 +1,10 @@
+- id: v-vet
+    name: 'v vet'
+    entry: v vet
+    files: '(\.v$)|(v\.mod)'
+    exclude: '^$'
+    language: 'system'
+    description: "Run v vet for each staged .v file"
+    pass_filenames: true
+    require_serial: true
+
