@@ -16,4 +16,13 @@
   description: "Run v fmt for each staged .v file"
   pass_filenames: true
   require_serial: true
+- id: v-test
+  name: 'v test'
+  entry: 'v -stats test .'
+  files: '(\.v$)|(v\.mod)'
+  exclude: '^$'
+  language: 'system'
+  description: "Run v test for the repository"
+  pass_filenames: false
+  require_serial: true
 
