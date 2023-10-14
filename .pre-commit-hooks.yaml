@@ -1,10 +1,19 @@
 - id: v-vet
   name: 'v vet'
-  entry: 'v vet'
+  entry: 'v vet -W'
   files: '(\.v$)|(v\.mod)'
   exclude: '^$'
   language: 'system'
   description: "Run v vet for each staged .v file"
+  pass_filenames: true
+  require_serial: true
+- id: v-fmt
+  name: 'v fmt'
+  entry: 'v fmt -verify'
+  files: '(\.v$)|(v\.mod)'
+  exclude: '^$'
+  language: 'system'
+  description: "Run v fmt for each staged .v file"
   pass_filenames: true
   require_serial: true
 
