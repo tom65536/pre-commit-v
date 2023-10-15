@@ -2,7 +2,7 @@
   name: 'v vet'
   entry: 'v vet -W'
   files: '(\.v$)|(v\.mod)'
-  exclude: '^$'
+  exclude: '^v\.mod$'
   language: 'system'
   description: "Run v vet for each staged .v file"
   pass_filenames: true
@@ -10,7 +10,7 @@
 - id: v-fmt
   name: 'v fmt'
   entry: 'v fmt -verify'
-  files: '(\.v$)|(v\.mod)'
+  files: '(\.v$)'
   exclude: '^$'
   language: 'system'
   description: "Run v fmt for each staged .v file"
