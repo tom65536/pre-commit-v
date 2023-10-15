@@ -1,0 +1,41 @@
+
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install V
+        uses: vlang/setup-v@v1
+        with:
+          check-latest: true
+
+      - name: Checkout ${{ github.event.repository.name }}
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v3
+
+      - name: Run pre-commit hooks
+        uses: pre-commit/action@v3.0.0
+
+      - name: Run test script
+        run: |
+          PROJECT_NAME=dummy
+          REPO_DIR=`pwd`
+          mkdir -p _${PROJECT_NAME}
+          pushd _${PROJECT_NAME}
+          v init
+          git add -f *
+          pre-commit try-repo ${REPO_DIR}
+          popd
+          rm -rf _${PROJECT_NAME}

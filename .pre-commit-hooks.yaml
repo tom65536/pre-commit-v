@@ -10,8 +10,8 @@
 - id: v-fmt
   name: 'v fmt'
   entry: 'v fmt -verify'
-  files: '(\.v$)'
-  exclude: '^$'
+  files: '(\.v$)|(v\.mod$)'
+  exclude: '^v\.mod$'
   language: 'system'
   description: "Run v fmt for each staged .v file"
   pass_filenames: true
@@ -19,7 +19,7 @@
 - id: v-test
   name: 'v test'
   entry: 'v -stats test .'
-  files: '(\.v$)|(v\.mod)'
+  files: '(\.v$)|(v\.mod$)'
   exclude: '^$'
   language: 'system'
   description: "Run v test for the repository"
